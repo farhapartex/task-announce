@@ -18,7 +18,8 @@ def check_args(args):
                     data.append({"task": task, "task_time": task_time})
                     print("")
 
-                create_file(data)
+                response = create_file(data)
+                print("File created" if response else "File not create")
             elif args[1] == "up":
                 bot = NotifyBot()
                 bot.run_notifier()

@@ -14,7 +14,7 @@ def check_file_exists():
 def create_file(data):
     try:
         df = pd.DataFrame(data)
-        df.to_csv(os.path.join(BASE_DIR, "/tasks.csv"), index=False)
+        df.to_csv(os.path.join(BASE_DIR, "tasks.csv"), index=False)
         print("Task file created!")
         return True
     except:
