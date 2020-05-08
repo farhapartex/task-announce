@@ -11,6 +11,7 @@ numpy = "*"
 notify2 = "*"
 dbus-python = "*"
 ipython = "*"
+celery = "*"
 
 [requires]
 python_version = "3.6"
