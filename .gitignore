@@ -1,3 +1,4 @@
 .vscode
 tasks.csv
 Pipfile.lock
+notifier/celerybeat-schedule

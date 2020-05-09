@@ -4,7 +4,7 @@ import numpy as np
 import os, sys
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-print(BASE_DIR)
+# print(BASE_DIR)
 
 
 def check_file_exists():

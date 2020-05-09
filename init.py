@@ -5,7 +5,7 @@ import time, sys, os
 
 def main():
     try:
-        from notifier import settings
+        from settings import settings
     except ImportError as exc:
         raise ImportError(
             "Couldn't import settings."

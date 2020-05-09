@@ -1,8 +1,7 @@
 #!/usr/bin/env python
 
 import os
-from .files import check_file_exists, create_file
-from .bot import NotifyBot
+from notifier.files import BASE_DIR, check_file_exists, create_file
 
 
 def check_args(args):
@@ -21,5 +20,7 @@ def check_args(args):
                 response = create_file(data)
                 print("File created" if response else "File not create")
             elif args[1] == "up":
-                bot = NotifyBot()
-                bot.run_notifier()
+                os.chdir(BASE_DIR + "/notifier")
+                print(os.getcwd())
+                celery = os.system("celery -A tasks worker --beat --loglevel=info")
+                # celery = os.system("python3 tasks.py")
