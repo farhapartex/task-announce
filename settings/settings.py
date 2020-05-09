@@ -5,22 +5,19 @@ from notifier.files import BASE_DIR, check_file_exists, create_file
 
 
 def check_args(args):
-    if len(args) > 1:
-        if args[0] == "init.py":
-            if args[1] == "tasks":
-                data = []
-                while True:
-                    task = input("Task Name: ")
-                    if task == "":
-                        break
-                    task_time = input("Task Time: ")
-                    data.append({"task": task, "task_time": task_time})
-                    print("")
+    if len(args) > 1 and args[0] == "init.py":
+        if args[1] == "tasks":
+            data = []
+            while True:
+                task = input("Task Name: ")
+                if task == "":
+                    break
+                task_time = input("Task Time: ")
+                data.append({"task": task, "task_time": task_time})
+                print("")
 
-                response = create_file(data)
-                print("File created" if response else "File not create")
-            elif args[1] == "up":
-                os.chdir(BASE_DIR + "/notifier")
-                print(os.getcwd())
-                celery = os.system("celery -A tasks worker --beat --loglevel=info")
-                # celery = os.system("python3 tasks.py")
+            response = create_file(data)
+            print("File created" if response else "File not create")
+        elif args[1] == "up":
+            os.chdir(BASE_DIR + "/notifier")
+            celery = os.system("celery -A tasks worker --beat --loglevel=info")

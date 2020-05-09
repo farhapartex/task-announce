@@ -18,7 +18,6 @@ def create_file(data):
         print("Task file created!")
         return True
     except:
-        print("There are some error, try again!")
         return False
 
 
@@ -28,7 +27,6 @@ def get_task_data():
             df = pd.read_csv(BASE_DIR + "/tasks.csv")
             return df.values.tolist()
         else:
-            print("file not found!")
             return []
     except:
         pass
