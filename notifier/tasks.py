@@ -6,10 +6,10 @@ import time
 from bot import NotifyBot
 
 logger = get_task_logger(__name__)
+
 app = Celery("periodic", broker="pyamqp://guest@localhost//")
 task_bot = NotifyBot()
 
-# print("Hasan working")
 @app.task
 def get_task():
     try:

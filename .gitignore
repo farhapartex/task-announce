@@ -2,3 +2,5 @@
 tasks.csv
 Pipfile.lock
 notifier/celerybeat-schedule
+notifier/__pycache__
+settings/__pycache__

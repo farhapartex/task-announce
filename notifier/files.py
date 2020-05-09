@@ -30,3 +30,11 @@ def get_task_data():
             return []
     except:
         pass
+
+
+def delete_file():
+    try:
+        os.chdir(BASE_DIR)
+        os.system("rm -f tasks.csv")
+    except:
+        pass
