@@ -41,7 +41,7 @@ class NotifyBot:
             "Task time: {0}".format(current_task[1]),
         )
         self._notify.show()
-        os.chdir(BASE_DIR)
+        os.chdir(BASE_DIR + "/settings")
         playsound("GunSound.mp3")
         time.sleep(3)
         del self.task_queue[0]
