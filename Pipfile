@@ -12,6 +12,8 @@ notify2 = "*"
 dbus-python = "*"
 ipython = "*"
 celery = "*"
+vext = "*"
+playsound = "*"
 
 [requires]
 python_version = "3.6"

@@ -1,6 +1,7 @@
 import notify2
 import os, sys, time
-from files import get_task_data, delete_file
+from files import BASE_DIR, get_task_data, delete_file
+from playsound import playsound
 
 
 class NotifyBot:
@@ -40,6 +41,8 @@ class NotifyBot:
             "Task time: {0}".format(current_task[1]),
         )
         self._notify.show()
-        time.sleep(7)
+        os.chdir(BASE_DIR)
+        playsound("GunSound.mp3")
+        time.sleep(3)
         del self.task_queue[0]
         if len(self.task_queue)==0: delete_file()
