@@ -15,7 +15,7 @@ def get_task():
     try:
         local_time = time.strftime("%H:%M", time.localtime())
         current_task = task_bot.get_current_task()
-        if local_time == current_task[1]:
+        if len(current_task) > 0 and local_time == current_task[1]:
             task_bot.run_notifier(current_task)
     except:
         print("There are some error! Check tasks.csv file")
