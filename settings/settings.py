@@ -2,6 +2,7 @@
 
 import os
 from notifier.files import BASE_DIR, check_file_exists, create_file
+from scrapper.scrapper import Scrapper
 
 
 def check_args(args):
@@ -21,3 +22,6 @@ def check_args(args):
         elif args[1] == "up":
             os.chdir(BASE_DIR + "/notifier")
             celery = os.system("celery -A tasks worker --beat --loglevel=info")
+        elif args[1] == "news":
+            obj = Scrapper()
+            obj.get_news_headline()
