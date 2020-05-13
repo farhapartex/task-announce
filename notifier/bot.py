@@ -58,8 +58,8 @@ class NotifyBot:
 
         self._notify.show()
         time.sleep(7)
-        # os.chdir(BASE_DIR + "/settings")
-        # playsound("GunSound.mp3")
+        os.chdir(BASE_DIR + "/settings")
+        playsound("GunSound.mp3")
         time.sleep(7) if current_task[0] == 'news_headline' else time.sleep(3)
         del self.task_queue[0]
         if len(self.task_queue)==0: delete_file()
