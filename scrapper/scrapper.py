@@ -6,6 +6,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support.expected_conditions import presence_of_element_located
+from bs4 import BeautifulSoup
 from notifier.files import BASE_DIR
 import os, time
 
@@ -30,19 +31,20 @@ class Scrapper:
 
     
     def get_news_headline(self):
-        print(BASE_DIR)
+        head_lines = []
         self._url = "https://service.prothomalo.com/commentary/marquee/"
         wait = WebDriverWait(self._webdriver, 10)
         self._webdriver.get(self._url)
         time.sleep(5)
-        # wait.until(presence_of_element_located((By.CSS_SELECTOR, ".h-corona")))
-        marquees = self._webdriver.find_elements_by_tag_name("marquee")
-        # print(marquee)
-        # marquee = corona_div.find_element_by_tag_name("marquee")
-        # spans = marquee[0].find_elements_by_tag_name("span")
-        # for marquee in marquees[0]:
-        #     print(marquee.text)
+        html_data = self._webdriver.page_source
+        soup = BeautifulSoup(html_data, "html.parser")
+        # marquees = self._webdriver.find_element_by_tag_name("marquee")
+        marquee = soup.find_all("marquee")[0]
+        for span in marquee.find_all("span", class_="dot"):
+            head_lines.append(span.next_sibling)
         
         self._webdriver.close()
+
+        return head_lines
 
         
