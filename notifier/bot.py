@@ -1,6 +1,7 @@
 import notify2
 import os, sys, time
-from files import BASE_DIR, get_task_data, delete_file
+from notifier.files import BASE_DIR, get_task_data, delete_file
+from scrapper.scrapper import Scrapper
 from playsound import playsound
 
 
@@ -36,13 +37,29 @@ class NotifyBot:
 
 
     def run_notifier(self, current_task):
-        self._notify.update(
-            "Task: {0}".format(current_task[0]),
-            "Task time: {0}".format(current_task[1]),
-        )
+
+        # self._notify.update(
+        #         "Task: {0}".format(current_task[0]),
+        #         "Task time: {0}".format(current_task[1]),
+        #     )
+
+        if current_task[0] == 'news_headline':
+            scraper = Scrapper()
+            head_lines = " | ".join(scraper.get_news_headline())
+            self._notify.update(
+                "Task: {0}".format(head_lines),
+                "Task time: {0}".format(current_task[1]),
+            )
+        else:
+            self._notify.update(
+                "Task: {0}".format(current_task[0]),
+                "Task time: {0}".format(current_task[1]),
+            )
+
         self._notify.show()
-        os.chdir(BASE_DIR + "/settings")
-        playsound("GunSound.mp3")
-        time.sleep(3)
+        time.sleep(7)
+        # os.chdir(BASE_DIR + "/settings")
+        # playsound("GunSound.mp3")
+        time.sleep(7) if current_task[0] == 'news_headline' else time.sleep(3)
         del self.task_queue[0]
         if len(self.task_queue)==0: delete_file()

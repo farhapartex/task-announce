@@ -1,8 +1,7 @@
 #!/usr/bin/env python
 
-import os
+import os, sys
 from notifier.files import BASE_DIR, check_file_exists, create_file
-from scrapper.scrapper import Scrapper
 
 
 def check_args(args):
@@ -20,8 +19,8 @@ def check_args(args):
             response = create_file(data)
             print("File created" if response else "File not create")
         elif args[1] == "up":
-            os.chdir(BASE_DIR + "/notifier")
+            os.chdir(BASE_DIR)
             celery = os.system("celery -A tasks worker --beat --loglevel=info")
-        elif args[1] == "news":
-            obj = Scrapper()
-            obj.get_news_headline()
+        # elif args[1] == "news":
+        #     obj = Scrapper()
+        #     obj.get_news_headline()

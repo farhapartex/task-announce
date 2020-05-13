@@ -3,7 +3,7 @@ from celery.task.schedules import crontab
 from celery.decorators import periodic_task
 from celery.utils.log import get_task_logger
 import time
-from bot import NotifyBot
+from notifier.bot import NotifyBot
 
 logger = get_task_logger(__name__)
 

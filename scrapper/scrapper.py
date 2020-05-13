@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
@@ -8,7 +6,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support.expected_conditions import presence_of_element_located
 from bs4 import BeautifulSoup
 from notifier.files import BASE_DIR
-import os, time
+import os, time, sys
 
 class Scrapper:
     def __init__(self):
